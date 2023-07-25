@@ -1,0 +1,3 @@
+module DataObjects
+  Webhook: untyped
+end

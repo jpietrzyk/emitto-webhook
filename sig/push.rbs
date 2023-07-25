@@ -1,0 +1,12 @@
+class Push
+  @connection: Object
+  @webhook: DataObjects
+
+  attr_accessor webhook: DataObjects
+
+  def push: -> untyped
+
+  private
+
+  def connection: -> untyped
+end

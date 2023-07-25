@@ -5,14 +5,14 @@ require_relative "lib/emitto/webhook/version"
 Gem::Specification.new do |spec|
   spec.name = "emitto-webhook"
   spec.version = Emitto::Webhook::VERSION
-  spec.authors = ["Jacek Pietrzyk"]
-  spec.email = ["jacek.pietrzyk@netguru.com"]
+  spec.authors = ["jpietrzyk"]
+  spec.email = ["y4ck@tutanota.com"]
 
   spec.summary = "Emit event via http"
   spec.description = "Emits data to webhook"
-  spec.homepage = 'https://github.com/jpietrzyk/emitto-webhook'
+  spec.homepage = "https://github.com/jpietrzyk/emitto-webhook"
   spec.license = "MIT"
-  spec.required_ruby_version = ">= 2.6.0"
+  spec.required_ruby_version = ">= 3.2.0"
 
   spec.metadata["allowed_push_host"] = "https://github.com/jpietrzyk/emitto-webhook'"
 
@@ -32,9 +32,13 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Uncomment to register a new dependency of your gem
-  # spec.add_dependency "example-gem", "~> 1.0"
+  # Dependencies
+  # TODO Check if it is still needed (or just need to request it in Gemfile)
+  spec.add_dependency "faraday"
 
-  # For more information and examples about making a new gem, check out our
-  # guide at: https://bundler.io/guides/creating_gem.html
+  # Test and development dependencies
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rubocop"
+  spec.add_development_dependency "sinatra"
 end
