@@ -12,7 +12,9 @@ gem "faraday"
 
 group :development, :test, :spec do
   gem "pry"
+  gem "rack-test"
   gem "rspec", "~> 3.0"
   gem "rubocop", "~> 1.21"
   gem "sinatra"
+  gem "webmock"
 end
