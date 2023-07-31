@@ -1,12 +1,16 @@
 class Push
   @connection: Object
+  @response: Faraday::Response
   @webhook: DataObjects
 
+  attr_accessor response: Faraday::Response
   attr_accessor webhook: DataObjects
+
+  def initialize: -> untyped
 
   def push: -> untyped
 
   private
 
-  def connection: -> untyped
+  def connection: -> Faraday::Response
 end

@@ -1,3 +1,4 @@
 module DataObjects
-  Webhook: untyped
+  Response: Data
+  Webhook: Data
 end

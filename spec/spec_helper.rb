@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 require "emitto/webhook"
+require "webmock/rspec"
+require "rack/test"
+require "pry"
+require_relative "support/fake_webhook"
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -11,5 +17,10 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+
+  config.before(:each) do
+    stub_request(:post, "https://external_webhook/authentication").to_rack(FakeWebhook)
+    stub_request(:post, "https://external_webhook/event").to_rack(FakeWebhook)
   end
 end

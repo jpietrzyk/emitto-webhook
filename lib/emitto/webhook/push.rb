@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "faraday"
+require_relative "../webhook/errors/connection_error"
 
 # Emits data to webhook
 class Push
@@ -9,17 +10,17 @@ class Push
   end
 
   def push
-    connection.post("post") do |request|
+    @response = connection.post(nil) do |request|
       request.body = webhook.body
     end
   rescue Faraday::Error => e
-    puts e.response[:status]
-    puts e.response[:body]
+    @response = e.response
+    raise Errors::ConnectionError, e
   end
 
   private
 
-  attr_accessor :webhook
+  attr_accessor :webhook, :response
 
   def connection
     @connection ||= Faraday.new(url: webhook.url, headers: webhook.headers) do |builder|
